@@ -1,0 +1,8 @@
+/target/ 
+*.class
+log-starwars.log*
+
+*.jar
+*.war
+*.ear
+*.db
