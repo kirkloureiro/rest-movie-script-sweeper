@@ -27,7 +27,11 @@ In order to build the application, you will need:
 - Maven 3 or higher
 - Internet Connection to download libs from maven central
 
-Just execute the command: mvn clean install
+Just execute the command: 
+
+```bash
+mvn clean install
+```
 
 # Running the application
 
@@ -70,10 +74,10 @@ Exposed services:
 
 The H2 database is automatically deployed by default at: http://localhost:8082/login.do
 
-Driver Class: org.h2.Driver
-JDBC URL: jdbc:h2:mem:starwarsdb
-Login: sa
-Password:
+- Driver Class: org.h2.Driver
+- JDBC URL: jdbc:h2:mem:starwarsdb
+- Login: sa
+- Password:
 
 Note: Don't worry about scripts, the database is created on deploy and droped on stop. If you want
 disable this feature, go to applicationContext.xml file and change the property hibernate.hbm2ddl.auto.
