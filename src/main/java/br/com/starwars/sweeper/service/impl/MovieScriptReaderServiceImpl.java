@@ -35,6 +35,12 @@ import br.com.starwars.sweeper.model.entity.WordCounts;
 import br.com.starwars.sweeper.service.MovieScriptReaderService;
 import br.com.starwars.sweeper.util.RegexMatcherUtil;
 
+/**
+ * Service Implementation for Interface {@link MovieScriptReaderService}
+ * 
+ * @author Bruno
+ *
+ */
 @Service
 public class MovieScriptReaderServiceImpl implements MovieScriptReaderService {
 
@@ -58,10 +64,12 @@ public class MovieScriptReaderServiceImpl implements MovieScriptReaderService {
 	@Autowired
 	private CharacterDtoAdapter characterDtoAdapter;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@Transactional
-	public String postMovieScript(final String movieScriptText)
-			throws ScriptAlreadyReceivedException, AbstractAppException {
+	public String postMovieScript(final String movieScriptText) throws ScriptAlreadyReceivedException, AbstractAppException {
 
 		try {
 
@@ -83,6 +91,9 @@ public class MovieScriptReaderServiceImpl implements MovieScriptReaderService {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@Transactional
 	public String getMovieSettings() throws AbstractAppException {
@@ -103,6 +114,9 @@ public class MovieScriptReaderServiceImpl implements MovieScriptReaderService {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@Transactional
 	public String getMovieSettingsById(final String settingsId) throws NoResultException, AbstractAppException {
@@ -124,6 +138,9 @@ public class MovieScriptReaderServiceImpl implements MovieScriptReaderService {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@Transactional
 	public String getMovieCharacters() throws AbstractAppException {
@@ -144,6 +161,9 @@ public class MovieScriptReaderServiceImpl implements MovieScriptReaderService {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	@Transactional
 	public String getMovieCharactersById(final String id) throws NoResultException, AbstractAppException {
@@ -233,8 +253,7 @@ public class MovieScriptReaderServiceImpl implements MovieScriptReaderService {
 
 				for (WordCounts wordCounts : getWordsFromLine(currentLine)) {
 
-					WordCounts existentWord = wordCountsDao.findWordCountByNameWord(wordCounts.getWord(),
-							currentCharacter.getId());
+					WordCounts existentWord = wordCountsDao.findWordCountByNameWord(wordCounts.getWord(), currentCharacter.getId());
 					if (existentWord != null) {
 						existentWord.setCount(existentWord.getCount().longValue() + 1);
 						wordCounts = wordCountsDao.update(existentWord);
